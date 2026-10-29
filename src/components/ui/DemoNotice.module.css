@@ -1,0 +1,38 @@
+.notice {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.2rem;
+  border: 1px dashed var(--signal-ink);
+  background: color-mix(in srgb, var(--signal) 7%, var(--paper));
+}
+
+.badge {
+  flex: none;
+  padding: 0.2rem 0.5rem;
+  background: var(--signal);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 650;
+}
+
+.title svg {
+  width: 16px;
+  height: 16px;
+}
+
+.text {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}

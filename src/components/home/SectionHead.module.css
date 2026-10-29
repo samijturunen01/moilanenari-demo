@@ -1,0 +1,47 @@
+.head {
+  margin-bottom: clamp(2rem, 4vw, 3.4rem);
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-muted);
+}
+
+.index {
+  color: var(--signal-ink);
+}
+
+.paper .index {
+  color: var(--signal);
+}
+
+.rule {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem 3rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.title {
+  font-size: var(--step-4);
+  max-width: 18ch;
+}
+
+.paper .kicker {
+  color: var(--text-on-ink-muted);
+}
+
+.aside {
+  flex: none;
+}

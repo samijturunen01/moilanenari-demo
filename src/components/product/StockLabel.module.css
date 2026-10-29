@@ -1,0 +1,36 @@
+.stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.in-stock .dot {
+  background: var(--ok);
+  box-shadow: 0 0 0 3px rgba(44, 122, 75, 0.16);
+}
+
+.backorder .dot {
+  background: var(--warn);
+}
+
+.sold-out {
+  color: var(--text-muted);
+}
+
+.sold-out .dot {
+  background: transparent;
+  border: 1.5px solid currentColor;
+}

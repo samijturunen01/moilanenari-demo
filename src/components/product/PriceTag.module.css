@@ -1,0 +1,70 @@
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.45rem;
+  row-gap: 0.2rem;
+}
+
+.amount {
+  font-stretch: 112%;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.prefix {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.quote {
+  font-weight: 600;
+  font-stretch: 108%;
+}
+
+.was {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  color: var(--signal-ink);
+  font-weight: 500;
+}
+
+.sm .amount {
+  font-size: 1.12rem;
+}
+
+.md .amount {
+  font-size: 1.35rem;
+}
+
+.lg .amount {
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.2rem);
+}
+
+.lg .was {
+  font-size: 0.85rem;
+}
+
+.lg .quote {
+  font-size: var(--step-3);
+}
+
+.dark .was,
+.dark .prefix {
+  color: var(--text-on-ink-muted);
+}
+
+.dark .badge {
+  color: var(--signal);
+}

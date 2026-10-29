@@ -1,0 +1,438 @@
+.page {
+  padding-block: clamp(2rem, 4vw, 3.5rem) clamp(4rem, 8vw, 7rem);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.kicker {
+  color: var(--text-muted);
+}
+
+.title {
+  font-size: clamp(2.8rem, 1.2rem + 6vw, 7.6rem);
+}
+
+.dot {
+  color: var(--signal);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* Details */
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.phoneCard {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.3rem 1rem;
+  padding: 1.4rem 1.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  transition: background var(--dur) var(--ease-out);
+}
+
+.phoneCard :global(.mono) {
+  color: var(--text-on-ink-muted);
+}
+
+.phoneCard > :global(.mono),
+.phoneNumber {
+  grid-column: 1;
+}
+
+.phoneCard svg {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  width: 28px;
+  height: 28px;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.phoneNumber {
+  font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3rem);
+  font-weight: 750;
+  font-stretch: 120%;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.phoneCard:hover {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+.phoneCard:hover :global(.mono) {
+  color: var(--ink);
+}
+
+.phoneCard:hover svg {
+  transform: translate(4px, -4px);
+}
+
+.list li {
+  display: flex;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.list li:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.list li > svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.6;
+  margin-top: 0.15rem;
+}
+
+.list li > span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 1.02rem;
+  font-weight: 550;
+}
+
+.list :global(.mono) {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.list a:not(.mapLink):hover {
+  color: var(--signal-ink);
+}
+
+.muted {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mapLink svg {
+  width: 14px;
+}
+
+/* Abstract locator graphic (not a map) */
+
+.locator {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--paper-sunk);
+}
+
+.locatorGrid {
+  position: absolute;
+  inset: -1px;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at 50% 50%, #000 30%, transparent 75%);
+}
+
+.pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  background: var(--signal);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--signal) 25%, transparent);
+}
+
+.pin::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--signal);
+  animation: ping 2.6s var(--ease-out) infinite;
+}
+
+@keyframes ping {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.locatorLabel {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 22px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* Form */
+
+.formWrap {
+  min-width: 0;
+}
+
+.formTitle {
+  font-size: var(--step-3);
+  margin-bottom: 1.4rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem 1.2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0 0.95rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--paper-raised);
+  transition:
+    border-color var(--dur-fast),
+    box-shadow var(--dur-fast);
+}
+
+.field input,
+.field select {
+  height: 52px;
+}
+
+.field select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) 50%,
+    calc(100% - 15px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.field textarea {
+  padding: 0.85rem 0.95rem;
+  resize: vertical;
+  min-height: 150px;
+  line-height: 1.5;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--signal) 25%, transparent);
+}
+
+.fieldError input,
+.fieldError textarea {
+  border-color: var(--signal-ink);
+}
+
+.error {
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: var(--signal-ink);
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--signal);
+}
+
+.productThumb {
+  aspect-ratio: 4 / 5;
+  background: var(--paper-sunk);
+  overflow: hidden;
+}
+
+.productThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.productInfo :global(.mono) {
+  font-size: 0.64rem;
+  color: var(--text-muted);
+}
+
+.productName {
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.productRemove {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  align-self: start;
+}
+
+.productRemove:hover {
+  background: var(--paper-sunk);
+}
+
+.productRemove svg {
+  width: 16px;
+}
+
+.submitRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.small {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.demoBadge {
+  padding: 0.1rem 0.4rem;
+  background: var(--signal);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Demo state */
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: clamp(1.6rem, 4vw, 2.6rem);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--signal);
+}
+
+.demoIcon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: var(--signal);
+}
+
+.demoIcon svg {
+  width: 24px;
+}
+
+.demoTitle {
+  font-size: var(--step-2);
+}
+
+.demoText {
+  color: var(--text-soft);
+  max-width: 52ch;
+}
+
+.demoText a {
+  color: var(--text);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .formWrap {
+    order: -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .submitRow > :global(*:last-child) {
+    width: 100%;
+  }
+}

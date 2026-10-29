@@ -1,0 +1,50 @@
+.section {
+  padding-block: clamp(4rem, 8vw, 7rem) 0;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 2.2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--ink);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  font-size: clamp(1.3rem, 1rem + 1.2vw, 2rem);
+  font-weight: 600;
+  font-stretch: 118%;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--text-muted);
+  transition: color var(--dur-fast);
+}
+
+.brand sup {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin-top: 0.4em;
+}
+
+.lg {
+  font-size: clamp(1.8rem, 1.2rem + 2vw, 3.2rem);
+  color: var(--text-soft);
+}
+
+.xl {
+  font-size: clamp(3rem, 1.6rem + 5vw, 7rem);
+  font-weight: 760;
+  font-stretch: 125%;
+  letter-spacing: -0.045em;
+  color: var(--text);
+}
+
+.brand:hover {
+  color: var(--signal-ink);
+}

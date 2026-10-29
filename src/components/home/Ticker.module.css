@@ -1,0 +1,104 @@
+.ticker {
+  display: flex;
+  align-items: stretch;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  background: var(--ink);
+  color: var(--text-on-ink);
+  overflow: hidden;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: none;
+  padding: 0 1.3rem 0 var(--gutter);
+  background: var(--signal);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: var(--ink);
+  border-radius: 50%;
+  animation: blink 1.6s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.viewport {
+  flex: 1;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 92%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 70s linear infinite;
+}
+
+.ticker:hover .track,
+.track:focus-within {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  padding: 1.05rem 2.2rem 1.05rem 0;
+  margin-left: 2.2rem;
+  white-space: nowrap;
+  border-right: 1px solid var(--ink-line);
+}
+
+.no {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-on-ink-muted);
+}
+
+.name {
+  font-weight: 600;
+  font-stretch: 108%;
+}
+
+.price {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--signal);
+}
+
+.item:hover .name {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .viewport {
+    overflow-x: auto;
+  }
+}

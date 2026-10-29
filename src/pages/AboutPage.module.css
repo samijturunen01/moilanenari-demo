@@ -1,0 +1,345 @@
+.page {
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.kicker {
+  color: var(--text-muted);
+}
+
+.title {
+  margin-top: 1.4rem;
+  font-size: clamp(2.6rem, 1.2rem + 5.4vw, 7rem);
+  max-width: 14ch;
+}
+
+.dot {
+  color: var(--signal);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2rem 5rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--ink);
+}
+
+.heroSide {
+  font-size: 1rem;
+  color: var(--text-soft);
+  padding-top: 0.3rem;
+}
+
+/* Shots */
+
+.shots {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 0.9rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.shot {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--paper-sunk);
+}
+
+.shot:first-child {
+  aspect-ratio: auto;
+  grid-row: span 1;
+}
+
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shotTag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0.35rem 0.6rem;
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+}
+
+.shotsCaption {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+}
+
+/* Numbers */
+
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(4rem, 8vw, 7rem);
+  border-top: 1px solid var(--ink);
+}
+
+.number {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.4rem 1.2rem 1.4rem 0;
+  border-right: 1px solid var(--line);
+}
+
+.number + .number {
+  padding-left: 1.2rem;
+}
+
+.number:nth-child(4) {
+  border-right: 0;
+}
+
+.numberValue {
+  font-size: clamp(3rem, 2rem + 4vw, 6rem);
+  font-weight: 300;
+  font-stretch: 125%;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.numberLabel {
+  color: var(--text-soft);
+}
+
+.numbersNote {
+  grid-column: 1 / -1;
+  padding-top: 0.6rem;
+  color: var(--text-muted);
+}
+
+/* Split */
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: 2rem clamp(2rem, 6vw, 6rem);
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.splitHead :global(.mono) {
+  color: var(--text-muted);
+}
+
+.h2 {
+  margin-top: 0.8rem;
+  font-size: var(--step-4);
+}
+
+.splitBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  font-size: 1.08rem;
+  color: var(--text-soft);
+  max-width: 62ch;
+}
+
+.splitBody > p:first-child {
+  font-size: var(--step-1);
+  color: var(--text);
+}
+
+.placeholder {
+  margin-top: 0.6rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px dashed var(--line-strong);
+  background: repeating-linear-gradient(-45deg, transparent 0 10px, rgba(18, 20, 22, 0.025) 10px 20px);
+  font-size: 0.92rem;
+}
+
+.placeholderBadge {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.15rem 0.45rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Departments */
+
+.departments {
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.deptList {
+  margin-top: 1.6rem;
+  border-top: 1px solid var(--ink);
+}
+
+.dept {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 1.2fr) 3rem 20px;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding var(--dur) var(--ease-out);
+}
+
+.dept :global(.mono) {
+  color: var(--text-muted);
+}
+
+.dept svg {
+  width: 18px;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.dept:hover {
+  padding-left: 0.6rem;
+}
+
+.dept:hover svg {
+  transform: rotate(45deg);
+}
+
+.deptName {
+  font-size: 1.15rem;
+  font-weight: 650;
+  font-stretch: 112%;
+  letter-spacing: -0.02em;
+}
+
+.deptDesc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* Service band */
+
+.service {
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  background: var(--ink);
+  color: var(--text-on-ink);
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: 2rem clamp(2rem, 6vw, 6rem);
+}
+
+.serviceKicker {
+  color: var(--text-on-ink-muted);
+}
+
+.serviceTitle {
+  margin-top: 0.8rem;
+  font-size: var(--step-4);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 2rem;
+}
+
+.facts > div {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--ink-line);
+}
+
+.facts dt {
+  color: var(--signal);
+}
+
+.facts dd {
+  margin-top: 0.4rem;
+  color: var(--text-on-ink);
+}
+
+.facts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.facts a svg {
+  width: 14px;
+}
+
+/* CTA */
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.ctaTitle {
+  font-size: var(--step-5);
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .heroGrid,
+  .split,
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .shots {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .shot:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .numbers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .number:nth-child(2) {
+    border-right: 0;
+  }
+
+  .number:nth-child(3) {
+    padding-left: 0;
+  }
+
+  .number:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+
+  .dept {
+    grid-template-columns: 2.4rem minmax(0, 1fr) auto;
+  }
+
+  .deptDesc,
+  .dept svg {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .facts {
+    grid-template-columns: 1fr;
+  }
+}

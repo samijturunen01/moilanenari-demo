@@ -1,0 +1,282 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* --- Media ------------------------------------------------------------- */
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--paper-sunk);
+  overflow: hidden;
+}
+
+.large .media {
+  aspect-ratio: 4 / 4.6;
+}
+
+.mediaLink {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.cover,
+.alt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(1.02);
+  transition:
+    transform 900ms var(--ease-out),
+    opacity 500ms var(--ease-out),
+    filter 500ms var(--ease-out);
+}
+
+.alt {
+  opacity: 0;
+}
+
+/* Crop marks — printer's corner ticks that frame the photo on hover */
+.crop {
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+  --c: var(--paper);
+  background:
+    linear-gradient(var(--c), var(--c)) top left / 16px 1.5px,
+    linear-gradient(var(--c), var(--c)) top left / 1.5px 16px,
+    linear-gradient(var(--c), var(--c)) top right / 16px 1.5px,
+    linear-gradient(var(--c), var(--c)) top right / 1.5px 16px,
+    linear-gradient(var(--c), var(--c)) bottom left / 16px 1.5px,
+    linear-gradient(var(--c), var(--c)) bottom left / 1.5px 16px,
+    linear-gradient(var(--c), var(--c)) bottom right / 16px 1.5px,
+    linear-gradient(var(--c), var(--c)) bottom right / 1.5px 16px;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
+}
+
+@media (hover: hover) {
+  .card:hover .cover {
+    transform: scale(1.04);
+    filter: none;
+  }
+
+  .card:hover .alt {
+    opacity: 1;
+    transform: scale(1.04);
+    filter: none;
+  }
+
+  .card:hover .crop {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card:hover .title a {
+    background-size: 100% 1px;
+  }
+}
+
+.flags {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  pointer-events: none;
+}
+
+.flagNew,
+.flagMuted {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.42rem 0.6rem 0.38rem;
+}
+
+.flagNew {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+.flagMuted {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Quick add — a square that unfolds into a labelled button on hover */
+.quickAdd {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  min-width: 44px;
+  padding: 0 13px;
+  gap: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition:
+    background var(--dur) var(--ease-out),
+    gap var(--dur) var(--ease-out);
+}
+
+.quickAdd svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.quickLabel {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .card:hover .quickAdd,
+  .quickAdd:focus-visible {
+    gap: 8px;
+  }
+
+  .card:hover .quickLabel,
+  .quickAdd:focus-visible .quickLabel {
+    max-width: 8rem;
+  }
+
+  .quickAdd:hover {
+    background: var(--signal);
+    color: var(--ink);
+  }
+}
+
+.quickAdded {
+  background: var(--ok);
+  gap: 8px;
+}
+
+.quickAdded .quickLabel {
+  max-width: 8rem;
+}
+
+/* --- Body -------------------------------------------------------------- */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.85rem;
+  flex: 1;
+}
+
+.tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tag > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  font-size: 1.02rem;
+  font-weight: 600;
+  font-stretch: 104%;
+  letter-spacing: -0.012em;
+  line-height: 1.22;
+  text-wrap: balance;
+}
+
+.large .title {
+  font-size: var(--step-2);
+  font-stretch: 112%;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.title a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size var(--dur) var(--ease-out);
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+.condition {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  text-align: right;
+  padding-bottom: 0.15rem;
+}
+
+.soldOut .cover {
+  filter: grayscale(1) contrast(0.9);
+  opacity: 0.7;
+}
+
+@media (max-width: 560px) {
+  .tag {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .title {
+    font-size: 0.94rem;
+  }
+
+  .foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .condition {
+    text-align: left;
+  }
+
+  .quickAdd {
+    height: 40px;
+    min-width: 40px;
+    padding: 0 11px;
+  }
+}

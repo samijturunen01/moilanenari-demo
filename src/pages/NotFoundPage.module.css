@@ -1,0 +1,25 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+  padding-block: clamp(4rem, 12vw, 10rem);
+}
+
+.code {
+  color: var(--signal-ink);
+}
+
+.title {
+  font-size: clamp(2.8rem, 1.2rem + 6vw, 7.6rem);
+}
+
+.title span {
+  color: var(--signal);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

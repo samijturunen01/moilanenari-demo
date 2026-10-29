@@ -1,0 +1,123 @@
+.button {
+  --bg: var(--ink);
+  --fg: var(--paper);
+  --wipe: var(--signal);
+  --wipe-fg: var(--ink);
+  --border: transparent;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+  min-height: 48px;
+  padding: 0 1.15rem 0 1.25rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-stretch: 108%;
+  font-size: 0.95rem;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  transition:
+    color var(--dur) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--wipe);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .button:hover {
+    color: var(--wipe-fg);
+  }
+
+  .button:hover .icon {
+    transform: translateX(3px);
+  }
+}
+
+.button:active {
+  transform: scale(0.985);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.button:disabled::before {
+  display: none;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.icon {
+  display: inline-flex;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.lg {
+  min-height: 58px;
+  padding: 0 1.35rem 0 1.5rem;
+  font-size: 1.02rem;
+}
+
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.signal {
+  --bg: var(--signal);
+  --fg: var(--ink);
+  --wipe: var(--ink);
+  --wipe-fg: var(--paper);
+}
+
+.outline {
+  --bg: transparent;
+  --fg: var(--ink);
+  --border: var(--line-strong);
+  --wipe: var(--ink);
+  --wipe-fg: var(--paper);
+}
+
+.outline-light {
+  --bg: transparent;
+  --fg: var(--paper);
+  --border: rgba(242, 240, 234, 0.35);
+  --wipe: var(--paper);
+  --wipe-fg: var(--ink);
+}
+
+.light {
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --wipe: var(--signal);
+  --wipe-fg: var(--ink);
+}

@@ -1,0 +1,218 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 4 / 4.4;
+  overflow: hidden;
+  background: var(--paper-sunk);
+  touch-action: pan-y;
+}
+
+.stage:focus-visible {
+  outline-offset: -2px;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.counter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.45rem 0.7rem;
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.expand {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--paper);
+  transition: background var(--dur-fast);
+}
+
+.expand:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.expand svg {
+  width: 17px;
+}
+
+.arrows {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+
+.arrows button {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: var(--ink);
+  color: var(--paper);
+  transition: background var(--dur-fast);
+}
+
+.arrows button + button {
+  border-left: 1px solid var(--ink-line);
+}
+
+.arrows button:hover {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+.arrows svg {
+  width: 20px;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--paper-sunk);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.thumb:hover img,
+.thumbActive img {
+  opacity: 1;
+}
+
+.thumb::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.thumbActive::after {
+  transform: scaleX(1);
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 4.4;
+  background: var(--paper-sunk);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+/* Lightbox */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  background: #0b0c0d;
+  color: var(--paper);
+}
+
+.lightboxImage {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  padding: clamp(0.5rem, 3vw, 2.5rem);
+}
+
+.lightboxBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem var(--gutter);
+  border-top: 1px solid var(--ink-line);
+}
+
+.lightboxBar :global(.mono) {
+  color: var(--text-on-ink-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lightboxButtons {
+  display: flex;
+  flex: none;
+}
+
+.lightboxButtons button {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+}
+
+.lightboxButtons button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lightboxButtons svg {
+  width: 22px;
+}
+
+@media (max-width: 560px) {
+  .stage {
+    aspect-ratio: 1 / 1.05;
+  }
+
+  .thumbs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .thumbs li {
+    flex: 0 0 64px;
+  }
+
+  .arrows button {
+    width: 44px;
+    height: 44px;
+  }
+}
